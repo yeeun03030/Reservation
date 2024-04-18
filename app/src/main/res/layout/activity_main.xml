@@ -52,10 +52,11 @@
         android:layout_marginTop="@dimen/marginLarge"
         android:layout_marginBottom="@dimen/marginLarge">
 
-        <CalendarView
+        <DatePicker
             android:id="@+id/calendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
             android:showWeekNumber="false" />
 
         <TimePicker

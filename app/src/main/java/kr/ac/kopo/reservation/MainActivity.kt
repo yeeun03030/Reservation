@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.CalendarView
 import android.widget.CalendarView.OnDateChangeListener
 import android.widget.Chronometer
+import android.widget.DatePicker
 import android.widget.RadioGroup
 import android.widget.RadioGroup.OnCheckedChangeListener
 import android.widget.TextView
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnStart: Button
     lateinit var btnDone: Button
     lateinit var rg: RadioGroup
-    lateinit var calendar: CalendarView
+    lateinit var calendar: DatePicker
     lateinit var timePicker: TimePicker
     lateinit var textResult: TextView
     var selectedYear: Int = 0
@@ -51,15 +52,18 @@ class MainActivity : AppCompatActivity() {
         btnDone.setOnClickListener {
             chrono.stop()
             chrono.setTextColor(Color.LTGRAY)
+            selectedYear = calendar.year
+            selectedMonth = calendar.month
+            selectedDay = calendar.dayOfMonth
             textResult.setText("" + selectedYear + "년 " + selectedMonth + "월 " + selectedDay + "일 ")
             textResult.append("" + timePicker.currentHour + ":" + timePicker.currentMinute + " 예약 완료")
         }
 
-        calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            selectedYear = year
-            selectedMonth = month + 1
-            selectedDay = dayOfMonth
-        }
+//        calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+//            selectedYear = year
+//            selectedMonth = month + 1
+//            selectedDay = dayOfMonth
+//        }
     }
 
     var rgListener = OnCheckedChangeListener {group, checkedId ->
