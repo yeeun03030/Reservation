@@ -7,11 +7,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="예약에 걸린 시간"-->
     <Chronometer
         android:id="@+id/chrono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:format="예약에 걸린 시간: %s:%s"
+        android:format="예약에 걸린 시간 %s"
         android:gravity="center"
         android:textSize="@dimen/textSizeLarge"
         android:layout_marginTop="@dimen/marginLarge" />
@@ -21,15 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/marginMedium"
-            android:backgroundTint="#B57B7B"
-            android:text="@string/btnStart"
-            android:textSize="@dimen/textSizeMedium" />
 
         <RadioButton
             android:id="@+id/rbDate"
@@ -73,21 +68,14 @@
         android:gravity="center"
         android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/btnDone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnDone"
-            android:textSize="@dimen/textSizeMedium"
-            android:layout_margin="@dimen/marginSmall"
-            android:backgroundTint="#885555" />
-
         <TextView
             android:id="@+id/textResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textSizeMedium"
-            android:layout_marginRight="@dimen/marginMedium"/>
+            android:layout_marginRight="@dimen/marginMedium"
+            android:text="예약결과: "
+            android:layout_marginLeft="@dimen/marginMedium"/>
 
     </LinearLayout>
 

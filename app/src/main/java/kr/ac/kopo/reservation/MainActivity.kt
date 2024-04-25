@@ -17,8 +17,6 @@ import android.widget.TimePicker
 
 class MainActivity : AppCompatActivity() {
     lateinit var chrono: Chronometer
-    lateinit var btnStart: Button
-    lateinit var btnDone: Button
     lateinit var rg: RadioGroup
     lateinit var calendar: DatePicker
     lateinit var timePicker: TimePicker
@@ -32,31 +30,40 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         chrono = findViewById(R.id.chrono)
-        btnStart = findViewById(R.id.btnStart)
-        btnDone = findViewById(R.id.btnDone)
         rg = findViewById(R.id.rg)
         calendar = findViewById(R.id.calendar)
         timePicker = findViewById(R.id.timePick)
         textResult = findViewById(R.id.textResult)
 
+        rg.visibility = View.INVISIBLE
         calendar.visibility = View.INVISIBLE
         timePicker.visibility = View.INVISIBLE
 
         rg.setOnCheckedChangeListener(rgListener)
-        btnStart.setOnClickListener {
+        chrono.setOnClickListener {
             chrono.base = SystemClock.elapsedRealtime()
             chrono.start()
             chrono.setTextColor(Color.DKGRAY)
+            rg.visibility = View.VISIBLE
         }
 
-        btnDone.setOnClickListener {
+
+
+
+        textResult.setOnLongClickListener {
             chrono.stop()
             chrono.setTextColor(Color.LTGRAY)
             selectedYear = calendar.year
             selectedMonth = calendar.month
             selectedDay = calendar.dayOfMonth
-            textResult.setText("" + selectedYear + "년 " + selectedMonth + "월 " + selectedDay + "일 ")
-            textResult.append("" + timePicker.currentHour + ":" + timePicker.currentMinute + " 예약 완료")
+            textResult.setText("" + selectedYear + "년 " + (selectedMonth + 1) + "월 " + selectedDay + "일 ")
+            textResult.append("" + timePicker.currentHour + ":" + timePicker.currentMinute + " 예약됨")
+
+            rg.visibility = View.INVISIBLE
+            calendar.visibility = View.INVISIBLE
+            timePicker.visibility = View.INVISIBLE
+
+            return@setOnLongClickListener true
         }
 
 //        calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
